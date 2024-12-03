@@ -4,6 +4,7 @@ const navigationBarList = document.getElementById("navbar__list");
 
 // Build the navigation menu
 const buildNav = () => {
+  sections[0].className = "active";
   const fragment = document.createDocumentFragment();
   sections.forEach(section => {
     const navItem = document.createElement("li");
@@ -32,34 +33,48 @@ window.addEventListener('DOMContentLoaded', buildNav);
 
 // Add or remove 'active' styles for sections and navigation items
 const setActiveSection = () => {
+
   sections.forEach(section => {
     const rect = section.getBoundingClientRect();
     const navLink = document.querySelector(`a[data-nav="${section.id}"]`);
-    if (rect.top >=0 && rect.top < window.innerHeight) {
-      
-      // Highlight the active section
-      section.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
-      section.style.transition = "background-color 0.3s";
-
+    if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+      // Add 'active' class to the section and highlight nav link
+      section.classList.add("active");
       // Highlight the active navigation link
       navLink.style.backgroundColor = "black";
       navLink.style.color = "white";
+      // Highlight the active section
+      section.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+      section.style.transition = "background-color 0.3s";
     } else {
       // Remove the highlight from the inactive section
-      section.style.backgroundColor = "";
-      navLink.style.backgroundColor = "";
+      section.classList.remove("active");
+      navLink.style.backgroundColor = "white";
       navLink.style.color = "black";
     }
   });
 };
 
-// Scroll to the section the user clicks
+
 const scrollToSection = (event) => {
-  if (event.target.tagName === "a") {
-    const targetSection = document.querySelector(event.target.getAttribute("href")); // selecting the section the user clicks on using its href attribute
-    targetSection.scrollIntoView();
+  if (event.target.tagName === "A") {
+    event.preventDefault(); // Prevent default anchor jump behavior
+
+    // Extract the target section ID from the href attribute
+    const targetId = event.target.getAttribute("href").slice(1);
+    const targetSection = document.getElementById(targetId);
+
+    // Check if the target section exists
+    if (targetSection) {
+      // Scroll into view with smooth behavior
+      targetSection.scrollIntoView({
+        behavior: "smooth", // Smooth scrolling effect
+        block: "end",     // Align to the start of the section
+      });
+    }
   }
 };
+
 
 // Event listeners:
 document.addEventListener("scroll", setActiveSection); // update the highlight status on scrolling
