@@ -1,9 +1,26 @@
-# Landing Page Project
+# Landing Page Project Description
 
-## Instructions
+## Multi-Section Landing Page
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Project Description
+This project is a responsive, interactive, and multi-section landing page with a navigation menu that highlights the section currently scrolled to.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Features
+1. Dynamic Navigation Menu:
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+    * The navigation menu is built dynamically based on the sections of the page.
+    * It updates automatically if new sections are added.
+2. Active State Styling:
+    * The section visible in the viewport and its corresponding navigation link are highlighted dynamically as the user scrolls.
+3. Smooth Scrolling:
+    * Clicking on a navigation link smoothly scrolls the page to the corresponding section.
+4. Responsive Design:
+    * The landing page is fully responsive and works seamlessly across desktop, tablet, and mobile devices.
+
+## Technologies Used
+* HTML5
+* CSS
+* JavaScript
+## How to Use
+Open index.html in any web browser to view the landing page.
+Scroll down and up the page to move between sections or click on the navigation menu up the page to go to a specific section.
